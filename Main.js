@@ -46,3 +46,27 @@ document.getElementById('submitBtn').addEventListener('click', function(event) {
         alert("يرجى ملء الاسم والرسالة أولاً");
     }
 });
+
+function typeEffect(element, speed) {
+  const text = element.innerHTML;
+  element.innerHTML = "";
+  element.classList.add('typing-cursor');
+  
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < text.length) {
+      element.append(text.charAt(i));
+      i++;
+    } else {
+      clearInterval(timer);
+   element.style.borderLeft = "none";
+    }
+  }, speed);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const p2 = document.querySelector(".containeroftext p:nth-child(1)");
+  if(p2) {
+    typeEffect(p2, 120); 
+  }
+});
